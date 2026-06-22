@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Quantec 카드뉴스 생성기</title>
+    <link rel="stylesheet" href="./styles.css?v=20260622-0825" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="control-panel" aria-label="카드뉴스 입력">
+        <div class="brand-row">
+          <div class="brand-heading">
+            <img id="headerBrandLogo" class="header-logo is-visible" src="./ai-quantec-header-logo.png" alt="AI Quantec 로고" />
+            <p id="headerBrandFallback" class="eyebrow is-hidden">브랜드 로고</p>
+            <h1>카드뉴스 생성기</h1>
+          </div>
+          <span class="status-pill" id="statusPill">대기</span>
+        </div>
+
+        <label class="field">
+          <span>세미나 사진</span>
+          <div class="drop-zone" id="imageDropZone">
+            <input id="imageInput" type="file" accept="image/*" multiple />
+            <div class="drop-zone-copy">
+              <strong>사진을 끌어다 놓거나 파일을 선택하세요</strong>
+              <small id="imageFileSummary">선택된 사진 없음</small>
+            </div>
+          </div>
+        </label>
+
+        <label class="field">
+          <span>전체 행사 원고</span>
+          <textarea id="scriptInput" rows="12" placeholder="전체 행사 설명문 또는 홍보 원고를 붙여넣으세요. 페이지별 문구는 입력하지 않아도 됩니다."></textarea>
+        </label>
+
+        <label class="field">
+          <span>행사명</span>
+          <input id="eventTitleInput" type="text" placeholder="비워두면 원고에서 자동 추출" />
+        </label>
+
+        <label class="field">
+          <span>브랜드 로고 파일</span>
+          <input id="brandLogoInput" type="file" accept="image/*" />
+        </label>
+
+        <label class="field check-row">
+          <input id="partnerLogoToggle" type="checkbox" />
+          <span>협력사 로고 삽입</span>
+        </label>
+
+        <label class="field logo-field" id="partnerLogoField">
+          <span>협력사 로고 파일</span>
+          <input id="partnerLogoInput" type="file" accept="image/*" />
+        </label>
+
+        <div class="action-row">
+          <button id="generateBtn" class="primary-btn" type="button">생성</button>
+          <button id="sampleBtn" class="secondary-btn" type="button">샘플 생성</button>
+          <button id="downloadAllBtn" class="secondary-btn" type="button" disabled>전체 다운로드</button>
+        </div>
+
+        <div class="note-box">
+          <strong>자동 구성</strong>
+          <p>1장 행사 개요, 2장 현장 스케치, 3장 투자 인사이트, 4장 브랜드 마무리로 원고를 분해합니다.</p>
+        </div>
+      </section>
+
+      <section class="preview-panel" aria-label="카드뉴스 미리보기">
+        <div class="preview-header">
+          <div>
+            <p class="eyebrow">Preview</p>
+            <h2>4장 카드뉴스</h2>
+          </div>
+          <button id="downloadCollageBtn" class="secondary-btn" type="button" disabled>콜라주 다운로드</button>
+        </div>
+
+        <div class="card-grid" id="cardGrid">
+          <article class="empty-card">1</article>
+          <article class="empty-card">2</article>
+          <article class="empty-card">3</article>
+          <article class="empty-card">4</article>
+        </div>
+
+        <canvas id="collageCanvas" width="2400" height="2400" hidden></canvas>
+      </section>
+    </main>
+
+    <script src="./app.js?v=20260622-0825"></script>
+  </body>
+</html>
